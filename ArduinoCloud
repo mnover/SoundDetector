@@ -1,0 +1,63 @@
+/* SOUND DETECTOR PINS:
+
+  GND -> GND
+  VCC -> 5V (Acceptable is 3.5 - 5.5 Volts)
+  GATE -> Digital (scale of 0-1 | Triggers when large range of noise occurs)
+  ENVELOPE -> Analog (scale of 0-100)
+  AUDIO -> Actual sound wave (for auxilliary cord to speaker)  
+*/
+
+#include <WiFiNINA.h>
+
+char ssid[] = ""; // network name
+char pass[] = ""; // pass
+int status = WL_IDLE_STATUS; // status
+int an = 2;
+
+void setup(){
+  Serial.begin(9600);
+  while (!Serial);
+
+  // Data inout
+  pinMode(an, INPUT);
+
+  /* WIFI
+  // connect to wifi
+  while (status != WL_CONNECTED){
+    Serial.print("Attempting to connect to network: ");
+    Serial.println(ssid);
+    status = WiFi.begin(ssid, pass);
+
+    delay(10000); // 10 seconds
+  }
+
+  Serial.println("connected");
+  Serial.println("---------------------------------------");
+  */
+}
+
+void loop(){
+  int soundDB = digitalRead(an);
+  Serial.println(soundDB);
+  /* WIFI
+  // check if the time after the last update is bigger the interval
+
+  Serial.println("Board Information:");
+  IPAddress ip = WiFi.localIP(); //IP
+  Serial.print("IP Address: ");
+  Serial.println(ip);
+
+  // print your network's SSID:
+  Serial.println();
+  Serial.println("Network Information:");
+  Serial.print("SSID: ");
+  Serial.println(WiFi.SSID());
+
+  // print the received signal strength:
+  long rssi = WiFi.RSSI();
+  Serial.print("signal strength (RSSI):");
+  Serial.println(rssi);
+  Serial.println("---------------------------------------");
+  delay(60000); */
+  delay(10);
+}
